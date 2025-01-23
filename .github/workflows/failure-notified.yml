@@ -1,0 +1,15 @@
+on:
+  workflow_run:
+    workflows: [Build]
+    types: [completed]
+ 
+jobs:
+  on-failure:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+      - name: Notify Slack on failure
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{"text":"The build pipeline has failed!"}' \
+          ${{ secrets.SLACK_WEBHOOK_URL }}
