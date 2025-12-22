@@ -1,0 +1,168 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Courier New", monospace;
+  background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+  color: #d4d4d4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.game-container {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.main-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+h1 {
+  text-align: center;
+  color: #f48771;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #858585;
+  font-size: 0.9em;
+  margin-bottom: 20px;
+}
+
+canvas {
+  border: 3px solid #f48771;
+  background: #252526;
+  display: block;
+  box-shadow: 0 0 20px rgba(244, 135, 113, 0.3);
+}
+
+.side-panel {
+  background: #252526;
+  border: 2px solid #3e3e42;
+  padding: 20px;
+  border-radius: 8px;
+  min-width: 200px;
+}
+
+.info-section {
+  margin-bottom: 25px;
+}
+
+.info-section h3 {
+  color: #4ec9b0;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+  border-bottom: 1px solid #3e3e42;
+  padding-bottom: 5px;
+}
+
+.score {
+  font-size: 2em;
+  color: #ce9178;
+  font-weight: bold;
+}
+
+.pattern-preview {
+  margin-top: 10px;
+}
+
+#patternCanvas {
+  border: 2px solid #3e3e42;
+  background: #1e1e1e;
+  display: block;
+  margin: 10px auto;
+}
+
+.pattern-name {
+  text-align: center;
+  color: #f48771;
+  font-weight: bold;
+  margin-top: 8px;
+  font-size: 0.9em;
+}
+
+.controls {
+  line-height: 1.8;
+  color: #858585;
+}
+
+.controls strong {
+  color: #d4d4d4;
+}
+
+.game-over {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #1e1e1e;
+  border: 3px solid #f48771;
+  padding: 40px;
+  border-radius: 10px;
+  text-align: center;
+  display: none;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+}
+
+.game-over.show {
+  display: block;
+}
+
+.game-over h2 {
+  color: #f48771;
+  font-size: 2.5em;
+  margin-bottom: 15px;
+}
+
+.game-over p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.game-over button {
+  background: #f48771;
+  color: #1e1e1e;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.1em;
+  font-family: "Courier New", monospace;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.game-over button:hover {
+  background: #ff9d88;
+}
+
+.status {
+  color: #4ec9b0;
+  font-size: 0.9em;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.8em;
+  }
+
+  .game-container {
+    gap: 15px;
+  }
+}
