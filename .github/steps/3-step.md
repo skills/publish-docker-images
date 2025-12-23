@@ -20,13 +20,16 @@ This action extracts information from Git references and GitHub events to create
 
 1. Edit `.github/workflows/docker-publish.yml`.
 1. Update the workflow trigger to include `tags` matching `v*` pattern.
+
    ```yaml
    on:
      push:
        branches: ["main"]
-       tags: ["v*.*.*"]
+       tags: ["v*"]
    ```
+
 1. Add a step to extract metadata (tags, labels) for Docker using `docker/metadata-action@v5`. Place it after the login step.
+
    ```yaml
    - name: Extract metadata (tags, labels) for Docker
      id: meta
@@ -34,18 +37,24 @@ This action extracts information from Git references and GitHub events to create
      with:
        images: ghcr.io/{{ full_repo_name | lower }}
    ```
+
 1. Update the `docker/build-push-action` step to use the generated tags and labels.
+
    ```yaml
    - name: Build and push Docker image
      uses: docker/build-push-action@v5
      with:
        context: .
        push: true
+       provenance: true
        tags: ${{ steps.meta.outputs.tags }}
        labels: ${{ steps.meta.outputs.labels }}
    ```
+
 1. Commit and push your changes to the `main` branch.
+
 1. Create and push a new tag to test the versioning (e.g., `v1.0.0`).
+
    ```bash
    git tag v1.0.0
    git push origin v1.0.0

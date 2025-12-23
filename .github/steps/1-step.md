@@ -1,6 +1,6 @@
-## Step 1: Basic Docker Authentication and Push
+## Step 1: First interaction with GitHub Packages
 
-### 📖 Theory: Authentication and Basic Commands
+### 📖 Theory: About GitHub Packages
 
 GitHub Container Registry (GHCR) provides a secure way to store and distribute Docker images directly within your GitHub repository ecosystem. To publish images to GHCR, you need to authenticate using the `docker/login-action`, which securely handles credentials using GitHub's built-in `GITHUB_TOKEN`.
 
