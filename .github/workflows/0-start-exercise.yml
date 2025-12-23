@@ -22,8 +22,8 @@ jobs:
     name: Start Exercise
     uses: skills/exercise-toolkit/.github/workflows/start-exercise.yml@v0.7.0
     with:
-      exercise-title: "(replace-me: Exercise title)"
-      intro-message: "(replace-me: Brief one line introduction message for the exercise)"
+      exercise-title: "Publish Docker Packages"
+      intro-message: "Learn how to build and publish Docker images using GitHub Actions."
 
   post_next_step_content:
     name: Post next step content

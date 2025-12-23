@@ -1,9 +1,12 @@
-name: Step 1
+name: Step 3
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
+    paths:
+      - ".github/workflows/docker-publish.yml"
 
 permissions:
   contents: read
@@ -11,11 +14,10 @@ permissions:
   issues: write
 
 env:
-  STEP_2_FILE: ".github/steps/2-step.md"
+  STEP_4_FILE: ".github/steps/4-step.md"
 
 jobs:
   find_exercise:
-    if: github.run_number != 1
     name: Find Exercise Issue
     uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.7.0
 
@@ -57,36 +59,21 @@ jobs:
 
       # START: Check practical exercise
 
-      - name: Check if workflow file exists
-        id: check-file-exists
-        continue-on-error: true
-        uses: skills/exercise-toolkit/actions/file-exists@v0.7.0
-        with:
-          file: .github/workflows/docker-publish.yml
-
-      - name: Check for docker login
-        id: check-login
+      - name: Check for metadata-action
+        id: check-metadata
         continue-on-error: true
         uses: skills/action-keyphrase-checker@v1
         with:
           text-file: .github/workflows/docker-publish.yml
-          keyphrase: "docker/login-action"
+          keyphrase: "docker/metadata-action"
 
-      - name: Check for docker build
-        id: check-build
+      - name: Check for tags trigger
+        id: check-tags-trigger
         continue-on-error: true
         uses: skills/action-keyphrase-checker@v1
         with:
           text-file: .github/workflows/docker-publish.yml
-          keyphrase: "docker build"
-
-      - name: Check for docker push
-        id: check-push
-        continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1
-        with:
-          text-file: .github/workflows/docker-publish.yml
-          keyphrase: "docker push"
+          keyphrase: "tags:"
 
       - name: Update comment - step results
         uses: GrantBirki/comment@v2.1.1
@@ -97,16 +84,12 @@ jobs:
           edit-mode: replace
           file: exercise-toolkit/markdown-templates/step-feedback/step-results-table.md
           vars: |
-            step_number: 1
+            step_number: 3
             results_table:
-              - description: "Created .github/workflows/docker-publish.yml"
-                passed: ${{ steps.check-file-exists.outcome == 'success' }}
-              - description: "Used docker/login-action"
-                passed: ${{ steps.check-login.outcome == 'success' }}
-              - description: "Used docker build command"
-                passed: ${{ steps.check-build.outcome == 'success' }}
-              - description: "Used docker push command"
-                passed: ${{ steps.check-push.outcome == 'success' }}
+              - description: "Used docker/metadata-action"
+                passed: ${{ steps.check-metadata.outcome == 'success' }}
+              - description: "Added tags trigger"
+                passed: ${{ steps.check-tags-trigger.outcome == 'success' }}
 
       # END: Check practical exercise
 
@@ -140,14 +123,14 @@ jobs:
           issue-number: ${{ env.ISSUE_NUMBER }}
           file: exercise-toolkit/markdown-templates/step-feedback/step-finished-prepare-next-step.md
           vars: |
-            next_step_number: 2
+            next_step_number: 4
 
       - name: Create comment - add step content
         uses: GrantBirki/comment@v2.1.1
         with:
           repository: ${{ env.ISSUE_REPOSITORY }}
           issue-number: ${{ env.ISSUE_NUMBER }}
-          file: ${{ env.STEP_2_FILE }}
+          file: ${{ env.STEP_4_FILE }}
           vars: |
             full_repo_name: ${{ github.repository }}
 
@@ -161,6 +144,6 @@ jobs:
       - name: Disable current workflow and enable next one
         run: |
           gh workflow disable "${{github.workflow}}"
-          gh workflow enable "Step 2"
+          gh workflow enable "Step 4"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

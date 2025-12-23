@@ -1,19 +1,15 @@
 name: Step 2
 
-
 on:
   workflow_dispatch:
-  # Common event triggers: pull_request, push, issues, issue_comment (feel free to experiment)
-  # Docs: https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
-  # Example:
-  # pull_request:
-  #   branches:
-  #     - main
-  #   types:
-  #     - closed
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/docker-publish.yml"
 
 permissions:
-  contents: write
+  contents: read
   actions: write
   issues: write
 
@@ -25,7 +21,6 @@ jobs:
     name: Find Exercise Issue
     uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.7.0
 
-  # This job is optional. We often call it a "grading job". If the step is not graded, remove it.
   check_step_work:
     name: Check step work
     runs-on: ubuntu-latest
@@ -36,10 +31,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
       - name: Get response templates
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
@@ -64,22 +59,21 @@ jobs:
 
       # START: Check practical exercise
 
-      # replace-me: Example of a grading check. You can add more checks as needed.
-      - name: Check if README file exists
-        id: check-file-exists
-        continue-on-error: true
-        uses: skills/exercise-toolkit/actions/file-exists@v0.7.0
-        with:
-          file: README.md
-
-      # replace-me: Example of a grading check. You can add more checks as needed.
-      - name: Check for keyphrase in README.md
-        id: check-for-keyphrase
+      - name: Check for setup-buildx-action
+        id: check-buildx
         continue-on-error: true
         uses: skills/action-keyphrase-checker@v1
         with:
-          text-file: README.md
-          keyphrase: Installation guide
+          text-file: .github/workflows/docker-publish.yml
+          keyphrase: "docker/setup-buildx-action"
+
+      - name: Check for build-push-action
+        id: check-build-push
+        continue-on-error: true
+        uses: skills/action-keyphrase-checker@v1
+        with:
+          text-file: .github/workflows/docker-publish.yml
+          keyphrase: "docker/build-push-action"
 
       - name: Update comment - step results
         uses: GrantBirki/comment@v2.1.1
@@ -92,12 +86,10 @@ jobs:
           vars: |
             step_number: 2
             results_table:
-              - description: "Checked if README.md file exists"
-                passed: ${{ steps.check-file-exists.outcome == 'success' }}
-              - description: "Checked for Installation guide in README.md"
-                passed: ${{ steps.check-for-keyphrase.outcome == 'success' }}
-
-      # Add more checks as needed
+              - description: "Used docker/setup-buildx-action"
+                passed: ${{ steps.check-buildx.outcome == 'success' }}
+              - description: "Used docker/build-push-action"
+                passed: ${{ steps.check-build-push.outcome == 'success' }}
 
       # END: Check practical exercise
 
@@ -107,7 +99,7 @@ jobs:
 
   post_next_step_content:
     name: Post next step content
-    needs: [find_exercise] # if check_step_work then "needs: [find_exercise, check_step_work]"
+    needs: [find_exercise, check_step_work]
     runs-on: ubuntu-latest
     env:
       ISSUE_REPOSITORY: ${{ github.repository }}
@@ -115,10 +107,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
       - name: Get response templates
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
@@ -139,6 +131,8 @@ jobs:
           repository: ${{ env.ISSUE_REPOSITORY }}
           issue-number: ${{ env.ISSUE_NUMBER }}
           file: ${{ env.STEP_3_FILE }}
+          vars: |
+            full_repo_name: ${{ github.repository }}
 
       - name: Create comment - watching for progress
         uses: GrantBirki/comment@v2.1.1
