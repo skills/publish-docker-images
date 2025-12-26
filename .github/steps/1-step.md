@@ -1,24 +1,40 @@
 ## Step 1: First interaction with GitHub Packages
 
-### 📖 Theory: About GitHub Packages
+### 📖 Theory: About GitHub Packages and Container Registry
 
-GitHub Container Registry (GHCR) provides a secure way to store and distribute Docker images directly within your GitHub repository ecosystem. To publish images to GHCR, you need to authenticate using the `docker/login-action`, which securely handles credentials using GitHub's built-in `GITHUB_TOKEN`.
+GitHub Packages is a platform for hosting and managing packages, including containers and other dependencies. It offers different package registries for commonly used package managers, such as:
 
-Basic Docker workflows use standard `docker build` and `docker push` commands within GitHub Actions. This approach gives you direct control over the build process and helps you understand the fundamental operations before moving to more automated solutions.
+- 📦 npm
+- 🐳 Docker
+- 💎 RubyGems
+- 🪶 Apache Maven
+- 🐘 Gradle
+- 🔷 NuGet
 
-- **Authentication**: The `docker/login-action` manages secure login to container registries
-- **Registry URL**: GHCR uses `ghcr.io` as the registry endpoint
-- **Permissions**: Requires `packages: write` permission for publishing images
-- **Image naming**: Follow the pattern `ghcr.io/OWNER/REPOSITORY/IMAGE_NAME:TAG`
+In this exercise we will setup automation to publish 🐳 Docker images to **GitHub Container Registry** (`ghcr.io`).
 
-#### References
+To authenticate to the GitHub Container Registry in GitHub Actions workflows, you must ensure the `packages` `permission` is set so the built-in `GITHUB_TOKEN` secret can be used as password.
 
-- [GitHub Container Registry documentation](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
-- [docker/login-action usage](https://github.com/docker/login-action#github-container-registry)
+### ⌨️ Activity: Set up your development environment
+
+Let's use **GitHub Codespaces** to set up a cloud-based development environment and work in it for the remainder of the exercise!
+
+1. Right-click the below button to open the **Create Codespace** page in a new tab. Use the default configuration.
+
+   [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/{{full_repo_name}}?quickstart=1)
+
+1. Confirm the **Repository** field is your copy of the exercise, not the original, then click the green **Create Codespace** button.
+
+   - ✅ Your copy: `/{{full_repo_name}}`
+   - ❌ Original: `/skills/publish-packages`
+
+1. Wait a moment for Visual Studio Code to fully load in your browser.
 
 ### ⌨️ Activity: Create Basic Docker Publish Workflow
 
-1. Go to `.github/workflows` directory and create a new workflow file named:
+Let's start off with creating a workflow to build publish a docker image.
+
+1. Within the `.github/workflows` directory create a new workflow file named:
 
    ```text
    docker-publish.yml
@@ -39,7 +55,7 @@ Basic Docker workflows use standard `docker build` and `docker push` commands wi
      packages: write
    ```
 
-   This workflow will run on pushes to the `main` branch with permissions to read the repository contents and push packages to the GitHub Container Registry.
+   This workflow will run on all commits pushed to the `main` branch with permissions to read the repository contents and push packages to the GitHub Container Registry.
 
 1. Add the `build-and-push` job to the end of the file:
 
@@ -68,11 +84,9 @@ Basic Docker workflows use standard `docker build` and `docker push` commands wi
 <details>
 <summary>Having trouble? 🤷</summary><br/>
 
-If the workflow fails, check the "Actions" tab for error logs. Common issues include:
+If the workflow fails, check the **Actions** tab for error logs. Common issues include:
 
 - Incorrect indentation in YAML
-- Typo in registry URL (`ghcr.io`)
-- Missing permissions block
 - Uppercase letters in the image name (Docker requires lowercase)
 
 </details>

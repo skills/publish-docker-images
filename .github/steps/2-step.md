@@ -4,14 +4,14 @@
 
 ### 📖 Theory: Specialized Docker Actions
 
-While basic Docker commands work, specialized GitHub Actions provide significant improvements for container workflows. The `docker/setup-buildx-action` enables BuildKit features like advanced caching, multi-platform builds, and improved performance.
+<!-- While basic Docker commands work, specialized GitHub Actions provide significant improvements for container workflows. The `docker/setup-buildx-action` enables BuildKit features like advanced caching, multi-platform builds, and improved performance.
 
 The `docker/build-push-action` replaces manual `docker build` and `docker push` commands with a more configurable and efficient solution. It integrates seamlessly with Buildx and provides better error handling, caching strategies, and build optimization.
 
 - **Buildx**: Docker's build engine with extended features beyond standard Docker build
 - **Build context**: Defines which files and directories are sent to the Docker daemon
 - **Push configuration**: Control when and how images are pushed to registries
-- **Performance**: Buildx provides better caching and parallel build capabilities
+- **Performance**: Buildx provides better caching and parallel build capabilities -->
 
 #### References
 

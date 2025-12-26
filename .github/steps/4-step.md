@@ -21,6 +21,7 @@ Adding pull request triggers allows testing your Docker workflow before merging 
 1. Create a new branch named `feature/multi-platform`.
 1. Edit `.github/workflows/docker-publish.yml`.
 1. Update the workflow trigger to include `pull_request` events for the `main` branch.
+
    ```yaml
    on:
      push:
@@ -29,6 +30,7 @@ Adding pull request triggers allows testing your Docker workflow before merging 
      pull_request:
        branches: ["main"]
    ```
+
 1. Add a step to set up QEMU using `docker/setup-qemu-action@v3` before the Buildx setup step.
    ```yaml
    - name: Set up QEMU
