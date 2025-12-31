@@ -16,6 +16,11 @@ Similarly to `docker/login-action` that you just used, there are also other open
 | `docker/setup-qemu-action`   | Enables building for different architectures (e.g., ARM64)                                                        |
 | `docker/setup-buildx-action` | Enables multi-platform builds, cache export, and full [BuildKit](https://docs.docker.com/build/buildkit/) support |
 
+> [!TIP]
+> These actions, like many others, are available in the [GitHub Marketplace](https://github.com/marketplace?query=docker&type=actions). 
+>
+> When you want to automate something with GitHub Actions, the [GitHub Marketplace](https://github.com/marketplace?type=actions) is a great place to start! Search it to see if someone has already built an action that solves your problem or part of it.
+
 ### ⌨️ (optional) Activity: Pull and run your docker image
 
 The commit from your previous step should have triggered the first run of your workflow and published a Docker image to the GitHub Container Registry.
@@ -23,8 +28,10 @@ The commit from your previous step should have triggered the first run of your w
 Let's pull that image and run it in your codespace to see the game running!
 
 1. Go to your repository [main page](https://github.com/{{ full_repo_name }})
-1. On the right side, under the **Packages** section, click `{{ full_repo_name | lower }}/stackoverflown`
-   <!-- TODO: ADD IMAGE -->
+1. On the right side, under the **Packages** section, click `{{ repo_name | lower }}/stackoverflown`
+
+   <img width="300" alt="Image showing packages button" src="https://github.com/user-attachments/assets/b07ff7c3-ef1c-4acd-b496-a5abebe64f8d" />
+
 1. Copy the command that starts with `docker pull ...`
 1. Back in your codespace, run that command in the terminal to download the image from the container registry
 1. Verify the image is available locally by running:
@@ -39,11 +46,14 @@ Let's pull that image and run it in your codespace to see the game running!
    docker run -p 8080:80 ghcr.io/{{ full_repo_name | lower }}/stackoverflown:main
    ```
 
-1. You can access the application through the `Ports` tab - on port `80`
+1. You can access the application through the `Ports` tab - on port `8080`
+
+   <img width="600" alt="Image showing the ports tab" src="https://github.com/user-attachments/assets/c6443a92-924f-4f31-9aa7-0a7d5d116a17" />
+
 
    > ✨ Take a moment to play the game!
 
-1. You can stop the application from running by hitting `Ctrl + C` (`Cmd + C` on Mac) back in the terminal
+1. You can stop the application from running by hitting `Ctrl + C` back in the terminal
 
 > [!NOTE]
 > Throughout this exercise, you will publish different versions of the image. You can always use these same steps to pull and run any version you create, even if not explicitly instructed.
@@ -55,6 +65,8 @@ Let's edit the workflow to use the official Docker actions for a more robust and
 1. Open the `.github/workflows/docker-publish.yml` file.
 1. Remove your existing `Build and push Docker image` step with `docker` commands. We will replace that with open source actions.
 1. Add these following three steps in place of the step you just removed
+
+   These steps will set up QEMU for multi-architecture builds, set up Docker Buildx, and then build and push the Docker image with two different tags.
 
    ```yaml
    - name: Set up QEMU
@@ -85,4 +97,4 @@ Let's edit the workflow to use the official Docker actions for a more robust and
    </details>
 
 1. Commit and push your changes to the `main` branch.
-1. Monitor your workflow run in the [Actions](https://github.com/{{ full_repo_name }}/actions) tab of your repository.
+1. Monitor your workflow run in the [Actions](https://github.com/{{ full_repo_name }}/actions) tab of your repository and **ensure it completes successfully**.

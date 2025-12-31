@@ -1,6 +1,6 @@
 ## Step 1: First interaction with GitHub Packages
 
-Welcome to the "Stackoverflown" team! You and your team have been working hard on an awesome web-based game called **Stackoverflown**. It's a hit, and now you want to package it for distribution so players everywhere can easily run it and deploy it to their servers.
+You and your team have been working hard on an awesome web-based game called **Stackoverflown**. It's a hit, and now you want to **package and version** it for distribution so players everywhere can easily run it and deploy it on their servers.
 
 <img alt="Screenshot of the Stackoverflown game" src="https://github.com/user-attachments/assets/2bcba6c0-6142-4880-87e4-a6d409dd0293" width="900">
 
@@ -10,16 +10,16 @@ To make this happen efficiently, let's automate the process of packaging new ver
 
 GitHub Packages is a platform for hosting and managing packages, including containers and other dependencies. It offers different package registries for commonly used package managers, such as:
 
+- 🐳 **Docker**
 - 📦 npm
-- 🐳 Docker
 - 💎 RubyGems
 - 🪶 Apache Maven
 - 🐘 Gradle
 - 🔷 NuGet
 
-In this exercise we will setup automation to publish 🐳 Docker images to **GitHub Container Registry** (`ghcr.io`).
+In this exercise we will setup automation to publish 🐳 **Docker** images to **GitHub Container Registry** (`ghcr.io`).
 
-To authenticate to the GitHub Container Registry in GitHub Actions workflows, you must ensure the `packages` `permission` is set so the built-in `GITHUB_TOKEN` secret can be used as password.
+To authenticate to the GitHub Container Registry in GitHub Actions workflows, you must ensure the `packages` `permission` is set so the built-in `GITHUB_TOKEN` secret can be used for authentication.
 
 ### ⌨️ Activity: Set up your development environment
 
@@ -46,7 +46,7 @@ Let's start off by creating a workflow to build and publish our **Stackoverflown
    docker-publish.yml
    ```
 
-1. Define the workflow name, triggers, and permissions:
+1. Within that file, let's start by defining the workflow name, event trigger and permissions:
 
    ```yaml
    name: Docker Publish
@@ -83,10 +83,10 @@ Let's start off by creating a workflow to build and publish our **Stackoverflown
              docker push ghcr.io/{{ full_repo_name | lower }}/stackoverflown:main
    ```
 
-   This job checks out the code, logs in to the GitHub Container Registry using the `GITHUB_TOKEN` (which has `packages: write` permissions), and then builds and pushes the Docker image.
+   This job checks out the repository code, authenticates to the GitHub Container Registry using `GITHUB_TOKEN`, builds the Docker image, and publishes it to the registry.
 
 1. Commit and push your changes to the `main` branch.
-1. As you push your changes Mona will prepare the next step in this exercise!
+1. When you push your changes, the workflow you just created should also run for the first time. Monitor it in the [**Actions**](https://github.com/{{ full_repo_name }}/actions) tab and **ensure it completes successfully**.
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>

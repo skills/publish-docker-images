@@ -150,6 +150,7 @@ jobs:
           file: ${{ env.STEP_2_FILE }}
           vars: |
             full_repo_name: ${{ github.repository }}
+            repo_name: ${{ github.event.repository.name }}
 
       - name: Create comment - watching for progress
         uses: GrantBirki/comment@v2.1.1

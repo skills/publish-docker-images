@@ -75,6 +75,38 @@ jobs:
           text-file: .github/workflows/docker-publish.yml
           keyphrase: "tags:"
 
+      - name: Check for pull_request trigger
+        id: check-pull-request-trigger
+        continue-on-error: true
+        uses: skills/action-keyphrase-checker@v1
+        with:
+          text-file: .github/workflows/docker-publish.yml
+          keyphrase: "pull_request:"
+
+      - name: Check for workflow_dispatch trigger
+        id: check-workflow-dispatch-trigger
+        continue-on-error: true
+        uses: skills/action-keyphrase-checker@v1
+        with:
+          text-file: .github/workflows/docker-publish.yml
+          keyphrase: "workflow_dispatch:"
+
+      - name: Check for metadata outputs tags usage
+        id: check-meta-tags
+        continue-on-error: true
+        uses: skills/action-keyphrase-checker@v1
+        with:
+          text-file: .github/workflows/docker-publish.yml
+          keyphrase: 'steps\.meta\.outputs\.tags'
+
+      - name: Check for metadata outputs labels usage
+        id: check-meta-labels
+        continue-on-error: true
+        uses: skills/action-keyphrase-checker@v1
+        with:
+          text-file: .github/workflows/docker-publish.yml
+          keyphrase: 'steps\.meta\.outputs\.labels'
+
       - name: Update comment - step results
         uses: GrantBirki/comment@v2.1.1
         with:
@@ -86,10 +118,18 @@ jobs:
           vars: |
             step_number: 3
             results_table:
-              - description: "Used docker/metadata-action"
+              - description: "Used `docker/metadata-action` action"
                 passed: ${{ steps.check-metadata.outcome == 'success' }}
-              - description: "Added tags trigger"
+              - description: "Added `tags` trigger"
                 passed: ${{ steps.check-tags-trigger.outcome == 'success' }}
+              - description: "Added `pull_request` trigger"
+                passed: ${{ steps.check-pull-request-trigger.outcome == 'success' }}
+              - description: "Added `workflow_dispatch` trigger"
+                passed: ${{ steps.check-workflow-dispatch-trigger.outcome == 'success' }}
+              - description: "Used metadata action `tags` output"
+                passed: ${{ steps.check-meta-tags.outcome == 'success' }}
+              - description: "Used metadata action `labels` output"
+                passed: ${{ steps.check-meta-labels.outcome == 'success' }}
 
       # END: Check practical exercise
 
