@@ -40,7 +40,7 @@ Let's use **GitHub Codespaces** to set up a cloud-based development environment 
 
 Let's start off by creating a workflow to build and publish our **Stackoverflown** game as a docker image.
 
-1. Within the `.github/workflows` directory create a new workflow file named:
+1. In your codespace, within the `.github/workflows` directory create a new workflow file named:
 
    ```text
    docker-publish.yml

@@ -73,6 +73,8 @@ jobs:
         with:
           text-file: .github/workflows/docker-publish.yml
           keyphrase: "docker/setup-buildx-action"
+          case-sensitive: true
+
 
       - name: Check for build-push-action
         id: check-build-push
@@ -81,6 +83,7 @@ jobs:
         with:
           text-file: .github/workflows/docker-publish.yml
           keyphrase: "docker/build-push-action"
+          case-sensitive: true
 
       - name: Check for setup-qemu-action
         id: check-qemu
@@ -89,6 +92,8 @@ jobs:
         with:
           text-file: .github/workflows/docker-publish.yml
           keyphrase: "docker/setup-qemu-action"
+          case-sensitive: true
+
 
       - name: Check that docker build command was removed
         id: check-removed-docker-build
@@ -97,6 +102,7 @@ jobs:
         with:
           text-file: .github/workflows/docker-publish.yml
           keyphrase: "docker build"
+          case-sensitive: true
           minimum-occurrences: 0
           maximum-occurrences: 0
 
@@ -107,6 +113,7 @@ jobs:
         with:
           text-file: .github/workflows/docker-publish.yml
           keyphrase: "docker push"
+          case-sensitive: true
           minimum-occurrences: 0
           maximum-occurrences: 0
 

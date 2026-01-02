@@ -78,6 +78,7 @@ jobs:
         with:
           text-file: .github/workflows/docker-publish.yml
           keyphrase: "docker/login-action"
+          case-sensitive: true
 
       - name: Check for docker build
         id: check-build
@@ -86,6 +87,8 @@ jobs:
         with:
           text-file: .github/workflows/docker-publish.yml
           keyphrase: "docker build"
+          case-sensitive: true
+
 
       - name: Check for docker push
         id: check-push
@@ -94,6 +97,8 @@ jobs:
         with:
           text-file: .github/workflows/docker-publish.yml
           keyphrase: "docker push"
+          case-sensitive: true
+
 
       - name: Update comment - step results
         uses: GrantBirki/comment@v2.1.1

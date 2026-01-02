@@ -59,6 +59,11 @@ Now that you have your feature branch ready, let's create a Pull Request to see 
     docker run -d -p 8080:80 ghcr.io/{{ full_repo_name | lower }}/stackoverflown:pr-<PR_NUMBER>
     ```
 
+   You can access the application through the `Ports` tab - on port `8080` and see the new high score feature!
+
+   <img width="600" alt="Image showing the ports tab" src="https://github.com/user-attachments/assets/c6443a92-924f-4f31-9aa7-0a7d5d116a17" />
+
+
 ### ⌨️ Activity: Merge the pull request and create a release
 
 Alright! Now let's merge the pull request and create a stable release with a proper version tag.
@@ -77,4 +82,5 @@ Alright! Now let's merge the pull request and create a stable release with a pro
 1. At the bottom, click the **Publish release** button.
 1. Go to the **[Actions](https://github.com/{{full_repo_name}}/actions)** tab one last time. You should see a workflow run triggered by the new tag.
    - This run will build the image with the `v1.0.0` tag.
+1. Once the workflow finishes successfully verify the image `v1.0.0` image is present in the **Packages** section of your repository.
 1. Once the release is published Mona will get back to you with a quick exercise review!

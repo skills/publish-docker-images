@@ -63,6 +63,9 @@ Let's edit the workflow to use the official Docker actions for a more robust and
 
 1. Open the `.github/workflows/docker-publish.yml` file.
 1. Remove your existing `Build and push Docker image` step with `docker` commands. We will replace that with open source actions.
+
+    > ❗ **Caution:** Only remove the `Build and push Docker image` step. Do **not** remove the steps with `actions/checkout` and `docker/login-action` actions.
+
 1. Add these following three steps in place of the step you just removed
 
    These steps will set up QEMU for multi-architecture builds, set up Docker Buildx, and then build and push the Docker image with two different tags.
@@ -113,8 +116,8 @@ Let's edit the workflow to use the official Docker actions for a more robust and
             uses: docker/login-action@v3
             with:
               registry: ghcr.io
-              username: ${{ github.actor }}
-              password: ${{ secrets.GITHUB_TOKEN }}
+              username: {% raw %}${{ github.actor }}{% endraw %}
+              password: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
           - name: Set up QEMU
             uses: docker/setup-qemu-action@v3
           - name: Set up Docker Buildx

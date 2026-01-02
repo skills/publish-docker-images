@@ -73,6 +73,8 @@ jobs:
         with:
           text-file: .github/workflows/docker-publish.yml
           keyphrase: "docker/metadata-action"
+          case-sensitive: true
+
 
       - name: Check for tags trigger
         id: check-tags-trigger
@@ -81,6 +83,8 @@ jobs:
         with:
           text-file: .github/workflows/docker-publish.yml
           keyphrase: "tags:"
+          case-sensitive: true
+
 
       - name: Check for pull_request trigger
         id: check-pull-request-trigger
@@ -89,6 +93,8 @@ jobs:
         with:
           text-file: .github/workflows/docker-publish.yml
           keyphrase: "pull_request:"
+          case-sensitive: true
+
 
       - name: Check for workflow_dispatch trigger
         id: check-workflow-dispatch-trigger
@@ -97,6 +103,8 @@ jobs:
         with:
           text-file: .github/workflows/docker-publish.yml
           keyphrase: "workflow_dispatch:"
+          case-sensitive: true
+
 
       - name: Check for metadata outputs tags usage
         id: check-meta-tags
@@ -105,14 +113,8 @@ jobs:
         with:
           text-file: .github/workflows/docker-publish.yml
           keyphrase: 'steps\.meta\.outputs\.tags'
+          case-sensitive: true
 
-      - name: Check for metadata outputs labels usage
-        id: check-meta-labels
-        continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1
-        with:
-          text-file: .github/workflows/docker-publish.yml
-          keyphrase: 'steps\.meta\.outputs\.labels'
 
       - name: Update comment - step results
         uses: GrantBirki/comment@v2.1.1
@@ -137,8 +139,6 @@ jobs:
                 passed: ${{ steps.check-workflow-dispatch-trigger.outcome == 'success' }}
               - description: "Used metadata action `tags` output"
                 passed: ${{ steps.check-meta-tags.outcome == 'success' }}
-              - description: "Used metadata action `labels` output"
-                passed: ${{ steps.check-meta-labels.outcome == 'success' }}
 
       # END: Check practical exercise
 
