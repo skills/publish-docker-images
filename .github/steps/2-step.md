@@ -2,7 +2,7 @@
 
 Good job!
 
-That commit you just did should have triggered the first run of your workflow and published a Docker image to the GitHub Container Registry
+That commit you just did should have triggered the first run of your workflow and published a Docker image to the GitHub Container Registry under your account.
 
 Let's see how to download that image and enhance the workflow with open source docker actions.
 
