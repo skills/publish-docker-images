@@ -16,3 +16,4 @@ Here's a recap of your accomplishments:
 
 - Check out the other [GitHub Skills exercises](https://learn.github.com/skills).
   - Take the [Test with Actions](https://github.com/skills-dev/test-with-actions) exercise to learn how to automate testing with GitHub Actions! Running automated tests before publishing packages is a good idea!
+- See GitHub Docs for more on [GitHub Packages](https://docs.github.com/en/packages) and [GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry).

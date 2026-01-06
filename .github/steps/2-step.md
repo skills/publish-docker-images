@@ -55,7 +55,7 @@ Let's pull that image and run it in your codespace to see the game running!
 > [!NOTE]
 > Throughout this exercise, you will publish different versions of the image. You can always use these same steps to pull and run any version you create, even if not explicitly instructed.
 
-### ⌨️ Activity: Enhance workflow with docker actions
+### ⌨️ Activity: Leverage open source Docker Actions
 
 Let's edit the workflow to use the official Docker actions for a more robust and feature-rich build process.
 
@@ -64,7 +64,7 @@ Let's edit the workflow to use the official Docker actions for a more robust and
 
     > ❗ **Caution:** Only remove the `Build and push Docker image` step. Do **not** remove the steps with `actions/checkout` and `docker/login-action` actions.
 
-1. Add these following three steps in place of the step you just removed
+   Now, add these following three steps in place of the `Build and push Docker image` step you just removed.
 
    These steps will set up QEMU for multi-architecture builds, set up Docker Buildx, and then build and push the Docker image with two different tags.
 
@@ -133,5 +133,5 @@ Let's edit the workflow to use the official Docker actions for a more robust and
 
    </details>
 
-1. Commit and push your changes to the `main` branch.
+1. Commit and push your changes to the `main` branch. As you push your changes Mona will check your work and prepare the next step in this exercise!
 1. Monitor your workflow run in the [Actions](https://github.com/{{ full_repo_name }}/actions) tab of your repository and **ensure it completes successfully**.
