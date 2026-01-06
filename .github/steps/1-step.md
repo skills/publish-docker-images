@@ -17,9 +17,15 @@ GitHub Packages is a platform for hosting and managing packages, including conta
 - 🐘 Gradle
 - 🔷 NuGet
 
-In this exercise we will setup automation to publish 🐳 **Docker** images to **GitHub Container Registry** (`ghcr.io`).
+GitHub Packages are associated with a GitHub account (User or Organization) namespace, not solely a repository. This is often beneficial because you may want to distribute a package and reuse a it across multiple repositories.
 
-To authenticate to the GitHub Container Registry in GitHub Actions workflows, you must ensure the `packages` `permission` is set so the built-in `GITHUB_TOKEN` secret can be used for authentication.
+In this exercise we will setup automation to publish 🐳 **[Docker](https://docs.docker.com/get-started/docker-overview/)** images to **[GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)** (`ghcr.io`). We will need to ensure the `packages` `permission` is set so the GitHub Actions built-in `GITHUB_TOKEN` secret can be used for authentication.
+
+
+> [!NOTE]
+> GitHub Packages is free for public repositories.
+>
+> For private repositories, there is a certain amount of free storage and data transfer each month. Check out [About billing for GitHub Packages](https://docs.github.com/en/billing/managing-billing-for-github-packages/about-billing-for-github-packages) for details.
 
 ### ⌨️ Activity: Set up your development environment
 
@@ -83,7 +89,9 @@ Let's start off by creating a workflow to build and publish our **Stackoverflown
              docker push ghcr.io/{{ full_repo_name | lower }}/stackoverflown:main
    ```
 
-   This job checks out the repository code, authenticates to the GitHub Container Registry using `GITHUB_TOKEN`, builds the Docker image, and publishes it to the registry.
+   This job checks out the repository code, authenticates to the GitHub Container Registry using `GITHUB_TOKEN`, builds the Docker image, and publishes it to the registry under your GitHub account.
+
+   > 🪧 Note: The `docker build` follows the instructions in the 🐳 **Dockerfile** file present in the repository on how to package the application
 
 1. Commit and push your changes to the `main` branch.
 1. When you push your changes, the workflow you just created should also run for the first time. Monitor it in the [**Actions**](https://github.com/{{ full_repo_name }}/actions) tab and **ensure it completes successfully**.
