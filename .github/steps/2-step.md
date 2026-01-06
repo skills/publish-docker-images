@@ -18,8 +18,6 @@ Similarly to `docker/login-action` that you just used, there are also other open
 
 > [!TIP]
 > These actions, like many others, are available in the [GitHub Marketplace](https://github.com/marketplace?query=docker&type=actions).
->
-> When you want to automate something with GitHub Actions, the [GitHub Marketplace](https://github.com/marketplace?type=actions) is a great place to start! Search it to see if someone has already built an action that solves your problem or part of it.
 
 ### ⌨️ (optional) Activity: Pull and run your docker image
 

@@ -19,7 +19,7 @@ GitHub Packages is a platform for hosting and managing packages, including conta
 
 GitHub Packages are associated with a GitHub account (User or Organization) namespace, not solely a repository. This is often beneficial because you may want to distribute a package and reuse a it across multiple repositories.
 
-In this exercise we will setup automation to publish 🐳 **[Docker](https://docs.docker.com/get-started/docker-overview/)** images to **[GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)** (`ghcr.io`). We will need to ensure the `packages` `permission` is set so the GitHub Actions built-in `GITHUB_TOKEN` secret can be used for authentication.
+In this exercise we will setup automation to publish 🐳 **[Docker](https://docs.docker.com/get-started/docker-overview/)** images to **[GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)** (`ghcr.io`). We will need to ensure the `packages` `permission` is set so the GitHub Actions built-in `GITHUB_TOKEN` secret can be used for authenticating to the registry.
 
 
 > [!NOTE]
