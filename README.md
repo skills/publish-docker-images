@@ -9,6 +9,7 @@ _Learn how to build and publish Docker images using GitHub Actions, progressing 
 - **What you'll build**: A GitHub Actions workflow that automatically builds and publishes Docker images to GitHub Container Registry.
 - **Prerequisites**:
   - [Hello GitHub Actions](https://github.com/skills/hello-github-actions) exercise level of familiarity with GitHub Actions workflows
+  - Basic familiarity with containerization and [Docker](https://docs.docker.com/get-started/docker-overview/)
 
 - **How long**: This exercise takes less than 1 hour to complete.
 
