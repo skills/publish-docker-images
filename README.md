@@ -1,4 +1,4 @@
-# Publish Packages
+# Publish Docker Images
 
 _Learn how to build and publish Docker images using GitHub Actions, progressing from basic commands to advanced automation with specialized Docker actions._
 
@@ -24,7 +24,7 @@ In this exercise, you will:
 
 Simply copy the exercise to your account, then give your favorite Octocat (Mona) **about 20 seconds** to prepare the first lesson, then **refresh the page**.
 
-[![](https://img.shields.io/badge/Copy%20Exercise-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/new?template_owner=skills-dev&template_name=publish-packages&owner=%40me&name=skills-publish-packages&description=Exercise:+Publish+Packages&visibility=public)
+[![](https://img.shields.io/badge/Copy%20Exercise-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/new?template_owner=skills&template_name=publish-docker-images&owner=%40me&name=skills-publish-docker-images&description=Exercise:+Publish+Docker+Images&visibility=public)
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>

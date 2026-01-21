@@ -38,7 +38,7 @@ Let's use **GitHub Codespaces** to set up a cloud-based development environment 
 1. Confirm the **Repository** field is your copy of the exercise, not the original, then click the green **Create Codespace** button.
 
    - ✅ Your copy: `/{{full_repo_name}}`
-   - ❌ Original: `/skills/publish-packages`
+   - ❌ Original: `/skills/publish-docker-images`
 
 1. Wait a moment for Visual Studio Code to fully load in your browser.
 
