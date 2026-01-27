@@ -61,7 +61,7 @@ Now that you have your feature branch ready, let's create a Pull Request to see 
 
    You can access the application through the `Ports` tab - on port `8080` and see the new high score feature!
 
-   <img width="600" alt="Image showing the ports tab" src="https://github.com/user-attachments/assets/c6443a92-924f-4f31-9aa7-0a7d5d116a17" />
+   <img width="600" alt="Image showing the ports tab" src="https://github.com/user-attachments/assets/80944d79-898a-43f9-94a0-6a9cc153f38d" />
 
 ### ⌨️ Activity: Merge the pull request and create a release
 
@@ -71,8 +71,7 @@ Alright! Now let's merge the pull request and create a stable release with a pro
    > 🪧 **Note:** This will also trigger a new **Docker Publish** workflow run
 1. Go to the **Code** tab of your repository and click on **Releases** (on the right sidebar).
 
-<img width="300" alt="Image showing the releases section of the repository" src="https://github.com/user-attachments/assets/0b158ddf-b7f9-42c1-8a9e-3fef5a6a2570" />
-
+   <img width="300" alt="Image showing the releases section of the repository" src="https://github.com/user-attachments/assets/a132ef5f-43cb-490c-b1fc-119f40eedb7c" />
 
 1. Create a new release:
    - Choose a tag: `v1.0.0` (Create new tag)
@@ -84,7 +83,7 @@ Alright! Now let's merge the pull request and create a stable release with a pro
    <summary>📸 Show screenshot</summary><br/>
 
 
-   <img width="600" alt="screenshot of create release page" src="https://github.com/user-attachments/assets/c420766e-0551-44bc-8209-a3438d724cfd" />
+   <img width="600" alt="screenshot of create release page" src="https://github.com/user-attachments/assets/c7e275b7-6881-41e0-a0d6-e59194f0c335" />
    
    </details>
 
@@ -103,20 +102,18 @@ You're done! As an optional step, you can explore the package settings for your 
 
 1. Go to your **Stackoverflown** packages page and click **Package settings** on the right side.
    
-   <img width="600"  alt="Image showing package settings button" src="https://github.com/user-attachments/assets/c6556fcd-2816-4b6d-823e-0b37a0cff1d1" />
+   <img width="600"  alt="Image showing package settings button" src="https://github.com/user-attachments/assets/0c3c531b-5337-4d02-a364-b0ff28abb582" />
 
 
 1. (optional) Under **Manage Actions access**, you can choose additional repositories that can access this package beyond the current repository.
 
-   <img width="600" alt="Image showing manage actions access" src="https://github.com/user-attachments/assets/f0c7b318-6d60-49de-b288-a68c7880bbbb" />
-
+   <img width="600" alt="Image showing manage actions access" src="https://github.com/user-attachments/assets/ed15d318-2b44-4120-9c83-a5d01afdadd2" />
 
    > 💡 **Tip:** This is particularly useful in an organization setting where multiple repositories may need access to the same package.
 
 1. (optional) Under **Danger Zone** you change the visibility or delete the package (all of its versions).
 
-   <img width="600" alt="Image showing danger zone section" src="https://github.com/user-attachments/assets/5e28dfd4-65e4-434e-8977-1dba4a4980ab" />
-
+   <img width="600" alt="Image showing danger zone section" src="https://github.com/user-attachments/assets/7928c7c0-def3-4d51-9a1d-42273ff68a36" />
 
    > ❕ **Important:** Since packages are linked to your **account** (not the repository), deleting this repository **will not** delete the package. If you ever want to delete the package you must delete do it from this page.
 
