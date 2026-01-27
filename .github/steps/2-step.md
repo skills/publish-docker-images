@@ -47,7 +47,8 @@ Let's pull that image and run it in your codespace to see the game running!
 
 1. You can access the application through the `Ports` tab - on port `8080`
 
-   <img width="600" alt="Image showing the ports tab" src="https://github.com/user-attachments/assets/c6443a92-924f-4f31-9aa7-0a7d5d116a17" />
+   <img width="600" alt="Image showing the ports tab" src="https://github.com/user-attachments/assets/80944d79-898a-43f9-94a0-6a9cc153f38d" />
+
 
    > ✨ Take a moment to play the game!
 
