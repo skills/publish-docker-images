@@ -28,7 +28,8 @@ Let's pull that image and run it in your codespace to see the game running!
 1. Go to your repository [main page](https://github.com/{{ full_repo_name }})
 1. On the right side, under the **Packages** section, click `{{ repo_name | lower }}/stackoverflown`
 
-   <img width="300" alt="Image showing packages button" src="https://github.com/user-attachments/assets/b07ff7c3-ef1c-4acd-b496-a5abebe64f8d" />
+   <img width="300" alt="Image showing packages button" src="https://github.com/user-attachments/assets/ada36c5a-f1ce-4125-9008-661976ffaa15" />
+
 
 1. Copy the command that starts with `docker pull ...`
 1. Back in your codespace, run that command in the terminal to download the image from the container registry
