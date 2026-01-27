@@ -25,7 +25,7 @@ In this exercise we will setup automation to publish 🐳 **[Docker](https://doc
 > [!NOTE]
 > GitHub Packages is free for public repositories.
 >
-> For private repositories, there is a certain amount of free storage and data transfer each month. Check out [About billing for GitHub Packages](https://docs.github.com/en/billing/managing-billing-for-github-packages/about-billing-for-github-packages) for details.
+> For private repositories, there is a certain amount of free storage and data transfer each month. Check out [About billing for GitHub Packages](https://docs.github.com/en/billing/concepts/product-billing/github-packages) for details.
 
 ### ⌨️ Activity: Set up your development environment
 
