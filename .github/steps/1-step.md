@@ -2,7 +2,7 @@
 
 You and your team have been working hard on an awesome web-based game called **Stackoverflown**. It's a hit, and now you want to **package and version** it for distribution so players everywhere can easily run it and deploy it on their servers.
 
-<img alt="Screenshot of the Stackoverflown game" src="https://github.com/user-attachments/assets/2bcba6c0-6142-4880-87e4-a6d409dd0293" width="900">
+<img alt="Screenshot of the Stackoverflown game" src="https://github.com/user-attachments/assets/8eb5fa0c-9282-459e-9d15-320c13f74263" width="900">
 
 To make this happen efficiently, let's automate the process of packaging new versions of your app using GitHub Actions!
 
