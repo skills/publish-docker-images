@@ -62,9 +62,11 @@ jobs:
       - name: Lint docker-publish.yml with actionlint
         id: actionlint-check
         continue-on-error: true
-        uses: raven-actions/actionlint@963d4779ef039e217e5d0e6fd73ce9ab7764e493 # v2.1.0
+        uses: raven-actions/actionlint@v2.1.1
         with:
           files: .github/workflows/docker-publish.yml
+          version: 1.7.10
+          fail-on-error: true
 
       - name: Check for setup-buildx-action
         id: check-buildx
