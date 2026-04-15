@@ -11,6 +11,7 @@
     "vscode": {
       "extensions": [
         "github.copilot",
+        "GitHub.copilot-chat",
         "redhat.vscode-yaml",
         "esbenp.prettier-vscode",
         "dbaeumer.vscode-eslint"
