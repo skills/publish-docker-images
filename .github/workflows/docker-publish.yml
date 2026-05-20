@@ -24,4 +24,3 @@ jobs:
         run: |
           docker build . --tag ghcr.io/tfghcpuserm1/skills-publish-docker-images/stackoverflown:main
           docker push ghcr.io/tfghcpuserm1/skills-publish-docker-images/stackoverflown:main
-
