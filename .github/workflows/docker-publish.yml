@@ -1,0 +1,27 @@
+name: Docker Publish
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push Docker image
+        run: |
+          docker build . --tag ghcr.io/tfghcpuserm1/skills-publish-docker-images/stackoverflown:main
+          docker push ghcr.io/tfghcpuserm1/skills-publish-docker-images/stackoverflown:main
+
