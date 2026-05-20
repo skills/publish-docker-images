@@ -22,5 +22,5 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker image
         run: |
-          docker build . --tag ghcr.io/tfghcpuserm1/skills-publish-docker-images/stackoverflown:main
-          docker push ghcr.io/tfghcpuserm1/skills-publish-docker-images/stackoverflown:main
+          docker build . --tag ghcr.io/tfghcpuserm1/stackoverflown:main
+          docker push ghcr.io/tfghcpuserm1/stackoverflown:main
