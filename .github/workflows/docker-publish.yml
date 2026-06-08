@@ -25,5 +25,5 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build . --tag ghcr.io/${{ github.repository_owner }}/stackoverflown:main
-          docker push ghcr.io/${{ github.repository_owner }}/stackoverflown:main
+          docker build . --tag ghcr.io/contosotech/stackoverflown:main
+          docker push ghcr.io/contosotech/stackoverflown:main
