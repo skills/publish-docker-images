@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Log in to the Container registry
+      - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
@@ -25,5 +25,5 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build . --tag ghcr.io/tfghcpuserm1/stackoverflown:main
-          docker push ghcr.io/tfghcpuserm1/stackoverflown:main
+          docker build . --tag ghcr.io/${{ github.repository_owner }}/stackoverflown:main
+          docker push ghcr.io/${{ github.repository_owner }}/stackoverflown:main
