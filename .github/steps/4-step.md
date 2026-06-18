@@ -111,10 +111,10 @@ You're done! As an optional step, you can explore the package settings for your 
 
    > 💡 **Tip:** This is particularly useful in an organization setting where multiple repositories may need access to the same package.
 
-1. (optional) Under **Danger Zone** you change the visibility or delete the package (all of its versions).
+1. (optional) Under **Danger Zone**, you can change the visibility or delete the package (including all of its versions).
 
    <img width="600" alt="Image showing danger zone section" src="https://github.com/user-attachments/assets/7928c7c0-def3-4d51-9a1d-42273ff68a36" />
 
-   > ❕ **Important:** Since packages are linked to your **account** (not the repository), deleting this repository **will not** delete the package. If you ever want to delete the package you must delete do it from this page.
+   > ❕ **Important:** Since packages are linked to your **account** (not the repository), deleting this repository **will not** delete the package. If you ever want to delete the package, you must do so from this page.
 
 </details>
